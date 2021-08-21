@@ -32,6 +32,18 @@ public class Repository {
         }
     }
 
+    public void delete(TermEntity termEntity) {
+        databaseExecutor.execute(() -> {
+            termDAO.delete(termEntity);
+        });
+    }
+
+    public void update(TermEntity termEntity) {
+        databaseExecutor.execute(() -> {
+            termDAO.update(termEntity);
+        });
+    }
+
     public List<TermEntity> getAllTerms() {
         databaseExecutor.execute(() ->{
             allTerms = termDAO.getAllTerms();

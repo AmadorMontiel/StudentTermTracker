@@ -14,6 +14,7 @@ public class TermEntity {
     private String termName;
     private String termStartDate;
     private String termEndDate;
+
     private List<CourseEntity> associatedCourses;
 
     public TermEntity(int termID, String termName, String termStartDate, String termEndDate) {
