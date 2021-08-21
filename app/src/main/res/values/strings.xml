@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">StudentTermTracker</string>
+    <string name="enter_text">Enter</string>
+    <string name="welcome_text">Welcome To Student Term Tracker</string>
+    <string name="add_course">Add New Course</string>
+    <string name="course_name">Course Name</string>
+    <string name="course_start_date">Start Date</string>
+    <string name="course_end_date">End Date</string>
+    <string name="course_status">Status</string>
+    <string name="course_instructor_information">Instructor Information</string>
+    <string name="save_course">Save Course</string>
+    <string name="term_title">Term Title</string>
+    <string name="term_start_date">Term Start Date</string>
+    <string name="term_end_date">Term End Date</string>
+    <string name="save_term">Save Term</string>
+    <string name="date_hint">mm/dd/yyyy</string>
+    <string name="term_title_hint">Ex. Spring, Term 1, etc.</string>
+    <string name="course_detail_test">Course Detail Test Button</string>
+    <string name="instructor_name">Instructor Name</string>
+    <string name="instructor_phone_number">Instructor Phone Number</string>
+    <string name="phone_hint">Ex. 555–555–5555</string>
+    <string name="instructor_email_address">Instructor Email Address</string>
+    <string name="course_name_hint">Ex. Bio, Chem, etc.</string>
+    <string name="course_status_hint">Ex. In Progress</string>
+    <string name="course_note">Note (Optional)</string>
+    <string name="add_assessment">Add Assessment</string>
+    <string name="assessment_title">Assessment Title</string>
+    <string name="assessment_end_date">Assessment End Date</string>
+    <string name="assessment_start_date">Assessment Start Date</string>
+    <string name="objective_radiobutton_text">Objective</string>
+    <string name="performance_radiobutton_text">Performance</string>
+    <string name="save_assessment">Save Assessment</string>
+    <string name="assessment_example">Ex. GCA5, etc</string>
+</resources>
