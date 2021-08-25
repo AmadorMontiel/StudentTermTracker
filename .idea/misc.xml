@@ -20,6 +20,7 @@
         <entry key="..\:/Repos/AndroidApps/StudentTermTracker/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Repos/AndroidApps/StudentTermTracker/app/src/main/res/layout/activity_term_detail.xml" value="0.33" />
         <entry key="..\:/Repos/AndroidApps/StudentTermTracker/app/src/main/res/layout/activity_term_list.xml" value="0.36666666666666664" />
+        <entry key="app/src/main/res/layout/activity_course_list.xml" value="0.1" />
       </map>
     </option>
   </component>

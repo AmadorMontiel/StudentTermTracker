@@ -3,7 +3,7 @@ package com.montiel.studenttermtracker.Entities;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity (tableName = "assessment_table")
 public class AssessmentEntity {
     @PrimaryKey(autoGenerate = true)
     private int assessmentID;
