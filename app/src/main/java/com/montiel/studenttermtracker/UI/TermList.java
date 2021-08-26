@@ -1,17 +1,25 @@
 package com.montiel.studenttermtracker.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AbsListView;
 
+import com.montiel.studenttermtracker.Database.Repository;
+import com.montiel.studenttermtracker.Entities.TermEntity;
 import com.montiel.studenttermtracker.R;
 
+import java.util.List;
 import java.util.Objects;
 
 public class TermList extends AppCompatActivity {
+
+    private Repository repository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +27,14 @@ public class TermList extends AppCompatActivity {
         setContentView(R.layout.activity_term_list);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        repository = new Repository(getApplication());
+        List<TermEntity> allTerms = repository.getAllTerms();
+
+        RecyclerView recyclerView = findViewById(R.id.termListRecyclerView);
+        final TermAdapter termAdapter = new TermAdapter(this);
+        recyclerView.setAdapter(termAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        termAdapter.setTerms(allTerms);
 
     }
 

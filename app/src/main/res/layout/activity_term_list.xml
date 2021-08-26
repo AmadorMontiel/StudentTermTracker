@@ -24,10 +24,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="1dp"
         android:layout_marginEnd="85dp"
         android:onClick="viewTermDetails"
         android:text="TERM DETAIL TEST BUTTON"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/termListRecyclerView" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/termListRecyclerView"
+        android:layout_width="409dp"
+        android:layout_height="630dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:background="@color/purple_200"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

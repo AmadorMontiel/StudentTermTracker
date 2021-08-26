@@ -15,7 +15,7 @@ public class TermEntity {
     private String termStartDate;
     private String termEndDate;
 
-    private List<CourseEntity> associatedCourses;
+    //private List<CourseEntity> associatedCourses;
 
     public TermEntity(int termID, String termName, String termStartDate, String termEndDate) {
         this.termID = termID;
@@ -40,19 +40,31 @@ public class TermEntity {
         this.termName = termName;
     }
 
-    public String getStartDate() {
+    public String getTermStartDate() {
         return termStartDate;
     }
 
-    public void setStartDate(String startDate) { this.termStartDate = startDate; }
+    public void setTermStartDate(String termStartDate) {
+        this.termStartDate = termStartDate;
+    }
 
-    public String getEndTime() {
+    public String getTermEndDate() {
         return termEndDate;
     }
 
-    public void setEndTime(String endTime) {
-        this.termEndDate = endTime;
+    public void setTermEndDate(String termEndDate) {
+        this.termEndDate = termEndDate;
     }
+
+    /*
+    public List<CourseEntity> getAssociatedCourses() {
+        return associatedCourses;
+    }
+
+    public void setAssociatedCourses(List<CourseEntity> associatedCourses) {
+        this.associatedCourses = associatedCourses;
+    }
+    */
 
     @NonNull
     @Override
