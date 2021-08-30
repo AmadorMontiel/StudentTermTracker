@@ -27,6 +27,7 @@ public class TermList extends AppCompatActivity {
         setContentView(R.layout.activity_term_list);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         repository = new Repository(getApplication());
         List<TermEntity> allTerms = repository.getAllTerms();
 

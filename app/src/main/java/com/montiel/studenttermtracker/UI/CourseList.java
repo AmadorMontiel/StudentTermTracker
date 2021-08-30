@@ -12,20 +12,25 @@ import com.montiel.studenttermtracker.Database.Repository;
 import com.montiel.studenttermtracker.Entities.TermEntity;
 import com.montiel.studenttermtracker.R;
 
+import java.util.List;
 import java.util.Objects;
 
 public class CourseList extends AppCompatActivity {
 
+    Repository repository;
+    List<TermEntity> allTerms;
+    int termID;
     String termName;
-    EditText editTermName;
-
     String termStartDate;
-    EditText editTermStartDate;
     String termEndDate;
+
+    EditText editTermName;
+    EditText editTermStartDate;
     EditText editTermEndDate;
 
-    int termID;
-    Repository repository;
+    TermEntity currentTerm;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,14 +38,28 @@ public class CourseList extends AppCompatActivity {
         setContentView(R.layout.activity_course_list);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        termName = getIntent().getStringExtra("termName");
-        editTermName = findViewById(R.id.term_title);
-        termStartDate = getIntent().getStringExtra("termStartDate");
-        editTermStartDate = findViewById(R.id.term_start_date_picker);
-        termEndDate = getIntent().getStringExtra("termEndDate");
-        editTermEndDate = findViewById(R.id.term_end_date_picker);
+
+        termID = getIntent().getIntExtra("termID", -1);
 
         repository = new Repository(getApplication());
+        allTerms = repository.getAllTerms();
+
+        for (TermEntity t: allTerms) {
+            if (t.getTermID() == termID) {
+                currentTerm = t;
+            }
+        }
+
+        editTermName = findViewById(R.id.term_title);
+        editTermStartDate = findViewById(R.id.term_start_date_picker);
+        editTermEndDate = findViewById(R.id.term_end_date_picker);
+
+        if (currentTerm != null) {
+            editTermName.setText(currentTerm.getTermName());
+            editTermStartDate.setText(currentTerm.getTermStartDate());
+            editTermEndDate.setText(currentTerm.getTermEndDate());
+        }
+
 
     }
 
@@ -68,14 +87,17 @@ public class CourseList extends AppCompatActivity {
     }
 
     public void saveTerm(View view) {
-        String screenTermName = editTermName.getText().toString();
-        if (termName == null) {
-            TermEntity editedTerm = new TermEntity(++termID, screenTermName, editTermStartDate.toString(), editTermEndDate.toString());
+        if (termID == -1) {
+            termID = allTerms.get(allTerms.size() - 1).getTermID();
+            TermEntity editedTerm = new TermEntity(++termID, editTermName.getText().toString(), editTermStartDate.getText().toString(), editTermEndDate.getText().toString());
             repository.insert(editedTerm);
         } else {
-            TermEntity oldTerm = new TermEntity(getIntent().getIntExtra("termID", -1), screenTermName, editTermStartDate.toString(), editTermEndDate.toString());
+            TermEntity oldTerm = new TermEntity(getIntent().getIntExtra("termID", -1), editTermName.getText().toString(), editTermStartDate.getText().toString(), editTermEndDate.getText().toString());
             repository.update(oldTerm);
         }
+
+        Intent intent = new Intent(CourseList.this, TermList.class);
+        startActivity(intent);
 
     }
 }

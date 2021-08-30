@@ -16,15 +16,12 @@ import com.montiel.studenttermtracker.R;
 import java.util.List;
 
 public class TermAdapter extends RecyclerView.Adapter<TermAdapter.TermViewHolder>{
-
-
     class TermViewHolder extends RecyclerView.ViewHolder{
         private final TextView termItemView;
-        private final TextView termItemView2;
+
         private TermViewHolder(View itemView) {
             super (itemView);
-            termItemView = itemView.findViewById(R.id.textView);
-            termItemView2 = itemView.findViewById(R.id.textView2);
+            termItemView = itemView.findViewById(R.id.termTextView);
             itemView.setOnClickListener(new View.OnClickListener() {
 
                 @Override
@@ -32,12 +29,12 @@ public class TermAdapter extends RecyclerView.Adapter<TermAdapter.TermViewHolder
                     int position = getAdapterPosition();
                     final TermEntity current = mTerms.get(position);
                     Intent intent = new Intent(context, CourseList.class);
-                    intent.putExtra("id", current.getTermID());
+                    intent.putExtra("termID", current.getTermID());
                     intent.putExtra("termName", current.getTermName());
                     intent.putExtra("termStartDate", current.getTermStartDate());
                     intent.putExtra("termEndDate", current.getTermEndDate());
-
                     context.startActivity(intent);
+
                 }
             });
         }
@@ -59,14 +56,12 @@ public class TermAdapter extends RecyclerView.Adapter<TermAdapter.TermViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TermAdapter.TermViewHolder holder, int position) {
+    public void onBindViewHolder(TermViewHolder holder, int position) {
         if(mTerms != null) {
-            TermEntity current = mTerms.get(position);
+            final TermEntity current = mTerms.get(position);
             holder.termItemView.setText(current.getTermName());
-            holder.termItemView2.setText(Integer.toString(current.getTermID()));
         } else {
             holder.termItemView.setText("No Term Name");
-            holder.termItemView2.setText("No Term ID");
         }
     }
 
@@ -77,6 +72,9 @@ public class TermAdapter extends RecyclerView.Adapter<TermAdapter.TermViewHolder
 
     @Override
     public int getItemCount() {
-        return mTerms.size();
+        if (mTerms != null)
+            return mTerms.size();
+        else
+            return 0;
     }
 }
