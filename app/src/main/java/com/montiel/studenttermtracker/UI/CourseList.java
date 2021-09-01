@@ -20,9 +20,6 @@ public class CourseList extends AppCompatActivity {
     Repository repository;
     List<TermEntity> allTerms;
     int termID;
-    String termName;
-    String termStartDate;
-    String termEndDate;
 
     EditText editTermName;
     EditText editTermStartDate;
@@ -87,14 +84,8 @@ public class CourseList extends AppCompatActivity {
     }
 
     public void saveTerm(View view) {
-        if (termID == -1) {
-            termID = allTerms.get(allTerms.size() - 1).getTermID();
-            TermEntity editedTerm = new TermEntity(++termID, editTermName.getText().toString(), editTermStartDate.getText().toString(), editTermEndDate.getText().toString());
-            repository.insert(editedTerm);
-        } else {
-            TermEntity oldTerm = new TermEntity(getIntent().getIntExtra("termID", -1), editTermName.getText().toString(), editTermStartDate.getText().toString(), editTermEndDate.getText().toString());
-            repository.update(oldTerm);
-        }
+        TermEntity oldTerm = new TermEntity(getIntent().getIntExtra("termID", -1), editTermName.getText().toString(), editTermStartDate.getText().toString(), editTermEndDate.getText().toString());
+        repository.update(oldTerm);
 
         Intent intent = new Intent(CourseList.this, TermList.class);
         startActivity(intent);
