@@ -22,8 +22,11 @@
         <entry key="..\:/Repos/AndroidApps/StudentTermTracker/app/src/main/res/layout/activity_term_list.xml" value="0.36666666666666664" />
         <entry key="..\:/Repos/AndroidApps/StudentTermTracker/app/src/main/res/layout/list_item.xml" value="0.36666666666666664" />
         <entry key="app/src/main/res/layout/activity_add_term.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_assessment_detail.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_course_detail.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_course_list.xml" value="0.2658514492753623" />
         <entry key="app/src/main/res/layout/activity_term_list.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/course_list_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/list_item.xml" value="0.2658514492753623" />
       </map>
     </option>

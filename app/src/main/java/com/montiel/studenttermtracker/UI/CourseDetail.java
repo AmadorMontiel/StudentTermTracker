@@ -7,11 +7,19 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.montiel.studenttermtracker.Database.Repository;
+import com.montiel.studenttermtracker.Entities.CourseEntity;
 import com.montiel.studenttermtracker.R;
 
+import java.util.List;
 import java.util.Objects;
 
 public class CourseDetail extends AppCompatActivity {
+
+    Repository repository;
+    List<CourseEntity> allCourses;
+    int courseID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -13,14 +13,44 @@ public class CourseEntity {
     private String courseName;
     private String courseStartDate;
     private String courseEndDate;
+    private String status;
+    private String instructorName;
+    private String instructorPhoneNumber;
+    private String instructorEmailAddress;
+    private String note;
 
-    private static List<AssessmentEntity> associatedAssessments;
+    private int termID;
 
-    public CourseEntity(int courseID, String courseName, String courseStartDate, String courseEndDate) {
+    public CourseEntity(int courseID, String courseName, String courseStartDate,
+                        String courseEndDate, String status, String instructorName,
+                        String instructorPhoneNumber, String instructorEmailAddress,
+                        String note, int termID) {
         this.courseID = courseID;
         this.courseName = courseName;
         this.courseStartDate = courseStartDate;
         this.courseEndDate = courseEndDate;
+        this.status = status;
+        this.instructorName = instructorName;
+        this.instructorPhoneNumber = instructorPhoneNumber;
+        this.instructorEmailAddress = instructorEmailAddress;
+        this.note = note;
+        this.termID = termID;
+    }
+
+    public CourseEntity(int courseID, String courseName,
+                        String courseStartDate, String courseEndDate,
+                        String status, String instructorName,
+                        String instructorPhoneNumber,
+                        String instructorEmailAddress, int termID) {
+        this.courseID = courseID;
+        this.courseName = courseName;
+        this.courseStartDate = courseStartDate;
+        this.courseEndDate = courseEndDate;
+        this.status = status;
+        this.instructorName = instructorName;
+        this.instructorPhoneNumber = instructorPhoneNumber;
+        this.instructorEmailAddress = instructorEmailAddress;
+        this.termID = termID;
     }
 
     public int getCourseID() {
@@ -55,11 +85,62 @@ public class CourseEntity {
         this.courseEndDate = courseEndDate;
     }
 
-    public static List<AssessmentEntity> getAssociatedAssessments() {
-        return associatedAssessments;
+    public int getTermID() {
+        return termID;
     }
 
-    public static void setAssociatedAssessments(List<AssessmentEntity> associatedAssessments) {
-        CourseEntity.associatedAssessments = associatedAssessments;
+    public void setTermID(int termID) {
+        this.termID = termID;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getInstructorName() {
+        return instructorName;
+    }
+
+    public void setInstructorName(String instructorName) {
+        this.instructorName = instructorName;
+    }
+
+    public String getInstructorPhoneNumber() {
+        return instructorPhoneNumber;
+    }
+
+    public void setInstructorPhoneNumber(String instructorPhoneNumber) {
+        this.instructorPhoneNumber = instructorPhoneNumber;
+    }
+
+    public String getInstructorEmailAddress() {
+        return instructorEmailAddress;
+    }
+
+    public void setInstructorEmailAddress(String instructorEmailAddress) {
+        this.instructorEmailAddress = instructorEmailAddress;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    @Override
+    public String toString() {
+        return "CourseEntity{" +
+                "courseID=" + courseID +
+                ", courseName='" + courseName + '\'' +
+                ", courseStartDate='" + courseStartDate + '\'' +
+                ", courseEndDate='" + courseEndDate + '\'' +
+                ", termID=" + termID +
+                '}';
     }
 }

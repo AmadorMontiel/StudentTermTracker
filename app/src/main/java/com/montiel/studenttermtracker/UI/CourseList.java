@@ -27,8 +27,6 @@ public class CourseList extends AppCompatActivity {
 
     TermEntity currentTerm;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
