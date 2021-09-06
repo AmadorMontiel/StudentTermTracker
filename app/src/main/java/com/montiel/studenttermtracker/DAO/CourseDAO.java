@@ -23,6 +23,9 @@ public interface CourseDAO {
     @Delete
     void delete(CourseEntity course);
 
-    @Query("SELECT * FROM course_table ORDER BY courseID")
+    @Query("SELECT * FROM course_table  ORDER BY courseID")
     List<CourseEntity> getAllCourses();
+
+    @Query("SELECT * FROM course_table WHERE termID = :associatedTerm")
+    List<CourseEntity> getCoursesByTerm(int associatedTerm);
 }

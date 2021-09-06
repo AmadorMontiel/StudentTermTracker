@@ -1,6 +1,8 @@
 package com.montiel.studenttermtracker.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.montiel.studenttermtracker.Database.Repository;
+import com.montiel.studenttermtracker.Entities.CourseEntity;
 import com.montiel.studenttermtracker.Entities.TermEntity;
 import com.montiel.studenttermtracker.R;
 
@@ -19,6 +22,7 @@ public class CourseList extends AppCompatActivity {
 
     Repository repository;
     List<TermEntity> allTerms;
+    List<CourseEntity> allCourses;
     int termID;
 
     EditText editTermName;
@@ -39,20 +43,32 @@ public class CourseList extends AppCompatActivity {
         repository = new Repository(getApplication());
         allTerms = repository.getAllTerms();
 
+
+
         for (TermEntity t: allTerms) {
             if (t.getTermID() == termID) {
                 currentTerm = t;
             }
         }
 
+        allCourses = repository.getCoursesByTerm(currentTerm.getTermID());
+
         editTermName = findViewById(R.id.term_title);
         editTermStartDate = findViewById(R.id.term_start_date_picker);
         editTermEndDate = findViewById(R.id.term_end_date_picker);
 
         if (currentTerm != null) {
+
+            RecyclerView recyclerView = findViewById(R.id.courseListRecyclerView);
+            final CourseAdapter courseAdapter = new CourseAdapter(this);
+            recyclerView.setAdapter(courseAdapter);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            courseAdapter.setCourses(allCourses);
+
             editTermName.setText(currentTerm.getTermName());
             editTermStartDate.setText(currentTerm.getTermStartDate());
             editTermEndDate.setText(currentTerm.getTermEndDate());
+
         }
 
 
@@ -73,6 +89,7 @@ public class CourseList extends AppCompatActivity {
 
     public void addCourse(View view) {
         Intent intent = new Intent(CourseList.this, AddCourse.class);
+        intent.putExtra("termID", currentTerm.getTermID());
         startActivity(intent);
     }
 
@@ -83,7 +100,7 @@ public class CourseList extends AppCompatActivity {
 
     public void saveTerm(View view) {
         TermEntity oldTerm = new TermEntity(getIntent().getIntExtra("termID", -1), editTermName.getText().toString(), editTermStartDate.getText().toString(), editTermEndDate.getText().toString());
-        repository.update(oldTerm);
+        repository.updateTerm(oldTerm);
 
         Intent intent = new Intent(CourseList.this, TermList.class);
         startActivity(intent);

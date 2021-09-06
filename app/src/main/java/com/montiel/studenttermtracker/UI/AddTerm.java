@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
-import com.montiel.studenttermtracker.DAO.TermDAO_Impl;
 import com.montiel.studenttermtracker.Database.Repository;
 import com.montiel.studenttermtracker.Entities.TermEntity;
 import com.montiel.studenttermtracker.R;
@@ -58,7 +57,7 @@ public class AddTerm extends AppCompatActivity {
     public void saveNewTerm(View view) {
             termID = allTerms.get(allTerms.size() - 1).getTermID();
             TermEntity newTerm = new TermEntity(++termID, editTermName.getText().toString(), editTermStartDate.getText().toString(), editTermEndDate.getText().toString());
-            repository.insert(newTerm);
+            repository.insertTerm(newTerm);
 
             Intent intent = new Intent(AddTerm.this, TermList.class);
             startActivity(intent);

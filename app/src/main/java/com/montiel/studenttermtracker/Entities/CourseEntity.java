@@ -1,6 +1,7 @@
 package com.montiel.studenttermtracker.Entities;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.util.List;
@@ -37,6 +38,7 @@ public class CourseEntity {
         this.termID = termID;
     }
 
+    @Ignore
     public CourseEntity(int courseID, String courseName,
                         String courseStartDate, String courseEndDate,
                         String status, String instructorName,

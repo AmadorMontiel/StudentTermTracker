@@ -7,10 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.montiel.studenttermtracker.Database.Repository;
+import com.montiel.studenttermtracker.Entities.CourseEntity;
 import com.montiel.studenttermtracker.Entities.TermEntity;
 import com.montiel.studenttermtracker.R;
-
-import java.time.LocalDateTime;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,9 +20,11 @@ public class MainActivity extends AppCompatActivity {
 
         Repository repository = new Repository(getApplication());
         TermEntity testTerm1 = new TermEntity(1, "Test Term 1", "08/15/2021", "08/15/2022");
-        repository.insert(testTerm1);
+        repository.insertTerm(testTerm1);
         TermEntity testTerm2 = new TermEntity(2, "Fall Term", "09/07/2022", "09/11/2023");
-        repository.insert(testTerm2);
+        CourseEntity testCourse1 = new CourseEntity(1, "Math", "08152005", "08152006", "Enrolled", "Bob Smith", "555-555-5555", "bobsmith@hsd.edu", 1);
+        repository.insertTerm(testTerm2);
+        repository.insertCourse(testCourse1);
     }
 
     public void enterApplication(View view) {
