@@ -9,16 +9,11 @@
 
     <Button
         android:id="@+id/enter_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="161dp"
-        android:layout_marginEnd="162dp"
-        android:layout_marginBottom="10dp"
-        android:text="@string/enter_text"
+        android:layout_width="88dp"
+        android:layout_height="48dp"
         android:onClick="enterApplication"
-        app:layout_constraintBottom_toTopOf="@+id/welcomeText"
+        android:text="@string/enter_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_image" />
 
@@ -39,18 +34,13 @@
         android:id="@+id/welcomeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="177dp"
-        android:layout_marginBottom="230dp"
+        android:layout_marginTop="10dp"
         android:text="@string/welcome_text"
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enter_button"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/enter_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

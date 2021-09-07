@@ -85,6 +85,18 @@ public class Repository {
             e.printStackTrace();
         }
     }
+
+    public void insertAssessment(AssessmentEntity assessmentEntity) {
+        databaseExecutor.execute(() -> {
+            assessmentDAO.insert(assessmentEntity);
+        });
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
     public List<CourseEntity> getAllCourses() {
         databaseExecutor.execute(() ->{
             allCourses = courseDAO.getAllCourses();
@@ -140,6 +152,7 @@ public class Repository {
 
         return allAssessments;
     }
+
 
 
 }

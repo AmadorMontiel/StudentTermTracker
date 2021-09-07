@@ -16,12 +16,13 @@ public class AssessmentEntity {
     private int courseID;
 
     public AssessmentEntity(int assessmentID, String assessmentName, String assessmentType,
-                            String assessmentStartDate, String assessmentEndDate) {
+                            String assessmentStartDate, String assessmentEndDate, int courseID) {
         this.assessmentID = assessmentID;
         this.assessmentName = assessmentName;
         this.assessmentType = assessmentType;
         this.assessmentStartDate = assessmentStartDate;
         this.assessmentEndDate = assessmentEndDate;
+        this.courseID = courseID;
     }
 
     public int getAssessmentID() {

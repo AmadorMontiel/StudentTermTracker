@@ -1,6 +1,8 @@
 package com.montiel.studenttermtracker.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -65,6 +67,12 @@ public class CourseDetail extends AppCompatActivity {
         editCourseNote = findViewById(R.id.edit_course_note);
 
         if (currentCourse != null) {
+
+            RecyclerView recyclerView = findViewById(R.id.assessment_recycler_view);
+            final AssessmentAdapter assessmentAdapter = new AssessmentAdapter(this);
+            recyclerView.setAdapter(assessmentAdapter);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            assessmentAdapter.setAssessments(allAssessments);
 
             editCourseName.setText(currentCourse.getCourseName());
             editCourseStartDate.setText(currentCourse.getCourseStartDate());
