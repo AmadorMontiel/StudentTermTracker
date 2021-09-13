@@ -38,11 +38,9 @@ public class CourseList extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        termID = getIntent().getIntExtra("termID", -1);
-
         repository = new Repository(getApplication());
         allTerms = repository.getAllTerms();
-
+        termID = getIntent().getIntExtra("termID", -1);
 
 
         for (TermEntity t: allTerms) {

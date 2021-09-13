@@ -44,10 +44,9 @@ public class CourseDetail extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        courseID = getIntent().getIntExtra("courseID", -1);
-
         repository = new Repository(getApplication());
         allCourses = repository.getAllCourses();
+        courseID = getIntent().getIntExtra("courseID", -1);
 
         for (CourseEntity c: allCourses) {
             if (c.getCourseID() == courseID) {
@@ -101,6 +100,7 @@ public class CourseDetail extends AppCompatActivity {
 
     public void addAssessment(View view) {
         Intent intent = new Intent(CourseDetail.this, AddAssessment.class);
+        intent.putExtra("courseID", currentCourse.getCourseID());
         startActivity(intent);
     }
 

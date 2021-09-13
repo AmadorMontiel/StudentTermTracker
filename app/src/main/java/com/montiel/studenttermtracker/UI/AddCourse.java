@@ -20,6 +20,7 @@ public class AddCourse extends AppCompatActivity {
     Repository repository;
     List<CourseEntity> allCourses;
     int courseID;
+    int termID;
 
     EditText addCourseName;
     EditText addCourseStartDate;
@@ -42,6 +43,7 @@ public class AddCourse extends AppCompatActivity {
 
         repository = new Repository(getApplication());
         allCourses = repository.getAllCourses();
+        termID = getIntent().getIntExtra("termID", -1);
 
 
         addCourseName = findViewById(R.id.edit_course_name);
@@ -78,10 +80,11 @@ public class AddCourse extends AppCompatActivity {
                 addCourseInstructorPhoneNumber.getText().toString(),
                 addCourseInstructorEmailAddress.getText().toString(),
                 addCourseNote.getText().toString(),
-                getIntent().getIntExtra("termID", -1));
+                termID);
         repository.insertCourse(newCourse);
 
         Intent intent = new Intent(AddCourse.this, CourseList.class);
+        intent.putExtra("termID", termID);
         startActivity(intent);
     }
 }

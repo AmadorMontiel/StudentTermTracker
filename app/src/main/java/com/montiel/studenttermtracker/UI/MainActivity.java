@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         CourseEntity testCourse1 = new CourseEntity(1, "Math", "08152005", "08152006", "Enrolled", "Bob Smith", "555-555-5555", "bobsmith@hsd.edu", 1);
         repository.insertTerm(testTerm2);
         repository.insertCourse(testCourse1);
-        AssessmentEntity testAssessment = new AssessmentEntity(1, "GCA-1", "Objective", "08092010", "08092015" ,1);
+        AssessmentEntity testAssessment = new AssessmentEntity(1, "GCA-1", "Performance", "08092010", "08092015" ,1);
         repository.insertAssessment(testAssessment);
     }
 

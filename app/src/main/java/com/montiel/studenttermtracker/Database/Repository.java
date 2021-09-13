@@ -42,9 +42,15 @@ public class Repository {
         }
     }
 
-    public void delete(TermEntity termEntity) {
+    public void deleteTerm(TermEntity termEntity) {
         databaseExecutor.execute(() -> {
             termDAO.delete(termEntity);
+        });
+    }
+
+    public void updateAssessment(AssessmentEntity assessmentEntity) {
+        databaseExecutor.execute(() -> {
+            assessmentDAO.update(assessmentEntity);
         });
     }
 
@@ -97,6 +103,7 @@ public class Repository {
             e.printStackTrace();
         }
     }
+
     public List<CourseEntity> getAllCourses() {
         databaseExecutor.execute(() ->{
             allCourses = courseDAO.getAllCourses();

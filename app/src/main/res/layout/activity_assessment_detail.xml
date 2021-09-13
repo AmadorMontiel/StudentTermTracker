@@ -28,7 +28,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/assessment_details_title"
+                    android:id="@+id/edit_assessment_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -36,7 +36,7 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/assessment_name_text"
+                    android:id="@+id/edit_assessment_name_text"
                     android:layout_width="0dp"
                     android:layout_height="48dp"
                     android:layout_weight="1"
@@ -53,6 +53,7 @@
 
                 <TextView
                     android:id="@+id/assessment_details_start_date"
+                    android:layout_gravity="fill"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -60,7 +61,7 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/assessment_details_start_date_text"
+                    android:id="@+id/edit_assessment_start_date_text"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -78,6 +79,7 @@
 
                 <TextView
                     android:id="@+id/assessment_details_end_date"
+                    android:layout_gravity="fill"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -85,7 +87,7 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/assessment_details_end_date_text"
+                    android:id="@+id/edit_assessment_end_date_text"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -132,6 +134,7 @@
         android:layout_marginStart="116dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="117dp"
+        android:onClick="saveAssessment"
         android:text="@string/save_assessment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
