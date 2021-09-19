@@ -31,4 +31,11 @@
     <string name="performance_radiobutton_text">Performance</string>
     <string name="save_assessment">Save Assessment</string>
     <string name="assessment_example">Ex. GCA5, etc</string>
+    <string name="refresh">Refresh</string>
+    <string name="delete">Delete</string>
+    <string name="share">Share</string>
+    <string name="notify_start">Notify Start</string>
+    <string name="notify_end">Notify End</string>
+    <string name="channel_name">channelName</string>
+    <string name="channel_desc">channelDescription</string>
 </resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/delete"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:id="@+id/delete_menu_item"/>
+    <item android:title="@string/share"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:id="@+id/share_menu_item"/>
+    <item android:title="@string/notify_start"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:id="@+id/notify_start_menu_item"/>
+    <item
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="@string/notify_end"
+        android:id="@+id/notify_end_menu_item"/>
+</menu>
