@@ -17,6 +17,7 @@ public class Repository {
     private final TermDAO termDAO;
     private final CourseDAO courseDAO;
     private final AssessmentDAO assessmentDAO;
+    private TermEntity selectedTerm;
     private List<TermEntity> allTerms;
     private List<CourseEntity> allCourses;
     private List<AssessmentEntity> allAssessments;
@@ -158,6 +159,20 @@ public class Repository {
         }
 
         return allAssessments;
+    }
+
+    public TermEntity getTermByID (int termID) {
+        databaseExecutor.execute(() -> {
+            selectedTerm = termDAO.getTermByID(termID);
+        });
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return selectedTerm;
     }
 
 

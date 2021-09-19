@@ -2,8 +2,12 @@ package com.montiel.studenttermtracker.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -13,7 +17,11 @@ import com.montiel.studenttermtracker.Database.Repository;
 import com.montiel.studenttermtracker.Entities.AssessmentEntity;
 import com.montiel.studenttermtracker.R;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 public class AssessmentDetail extends AppCompatActivity {
@@ -31,7 +39,8 @@ public class AssessmentDetail extends AppCompatActivity {
 
     AssessmentEntity currentAssessment;
 
-
+    String dateFormat = "mm/dd/yy";
+    SimpleDateFormat formatter = new SimpleDateFormat(dateFormat, Locale.US);
 
 
     @Override
@@ -80,13 +89,61 @@ public class AssessmentDetail extends AppCompatActivity {
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            this.finish();
-            return true;
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+
+            case R.id.notify_assessment_start_menu_item: {
+
+                Date notifyStartDate = null;
+                try {
+                    notifyStartDate = formatter.parse(currentAssessment.getAssessmentStartDate());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                Long startTrigger = notifyStartDate.getTime();
+
+                Intent intent = new Intent(AssessmentDetail.this, NotificationReceiver.class);
+                intent.putExtra("key", "Your assessment: " + currentAssessment.getAssessmentName() + " is starting on " + currentAssessment.getAssessmentStartDate());
+                PendingIntent sender = PendingIntent.getBroadcast(AssessmentDetail.this, ++MainActivity.numAlert, intent, 0);
+
+                AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, startTrigger, sender);
+
+
+                return true;
+            }
+
+            case R.id.notify_assessment_end_menu_item: {
+
+                Date notifyEndDate = null;
+                try {
+                    notifyEndDate = formatter.parse(currentAssessment.getAssessmentEndDate());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                Long endTrigger = notifyEndDate.getTime();
+
+                Intent intent = new Intent(AssessmentDetail.this, NotificationReceiver.class);
+                intent.putExtra("key", "Your course: " + currentAssessment.getAssessmentName() + " is ending on " + currentAssessment.getAssessmentEndDate());
+                PendingIntent sender = PendingIntent.getBroadcast(AssessmentDetail.this, ++MainActivity.numAlert, intent, 0);
+
+                AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, endTrigger, sender);
+
+                return true;
+            }
         }
         return super.onOptionsItemSelected(item);
     }
 
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.assessment_menu, menu);
+        return true;
+    }
     public void saveAssessment(View view) {
 
         if (objective.isChecked()) {

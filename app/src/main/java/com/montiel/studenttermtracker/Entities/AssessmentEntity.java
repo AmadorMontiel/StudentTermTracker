@@ -72,4 +72,5 @@ public class AssessmentEntity {
     public void setCourseID(int courseID) {
         this.courseID = courseID;
     }
+
 }

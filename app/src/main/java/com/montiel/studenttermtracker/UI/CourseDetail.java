@@ -17,7 +17,6 @@ import android.widget.EditText;
 import com.montiel.studenttermtracker.Database.Repository;
 import com.montiel.studenttermtracker.Entities.AssessmentEntity;
 import com.montiel.studenttermtracker.Entities.CourseEntity;
-import com.montiel.studenttermtracker.Entities.TermEntity;
 import com.montiel.studenttermtracker.R;
 
 import java.text.ParseException;
@@ -45,6 +44,9 @@ public class CourseDetail extends AppCompatActivity {
     EditText editCourseNote;
 
     CourseEntity currentCourse;
+
+    String dateFormat = "mm/dd/yy";
+    SimpleDateFormat formatter = new SimpleDateFormat(dateFormat, Locale.US);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,7 +107,7 @@ public class CourseDetail extends AppCompatActivity {
                 this.finish();
                 return true;
 
-            case R.id.share_menu_item: {
+            case R.id.share_course_note_menu_item: {
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
                 sendIntent.putExtra(Intent.EXTRA_TEXT, currentCourse.getNote());
@@ -115,9 +117,8 @@ public class CourseDetail extends AppCompatActivity {
                 startActivity(shareIntent);
                 return true;
             }
-            case R.id.notify_start_menu_item: {
-                String dateFormat = "mm/dd/yy";
-                SimpleDateFormat formatter = new SimpleDateFormat(dateFormat, Locale.US);
+
+            case R.id.notify_course_start_menu_item: {
 
                 Date notifyStartDate = null;
                 try {
@@ -138,12 +139,33 @@ public class CourseDetail extends AppCompatActivity {
 
                 return true;
             }
+
+            case R.id.notify_course_end_menu_item: {
+
+                Date notifyEndDate = null;
+                try {
+                    notifyEndDate = formatter.parse(currentCourse.getCourseEndDate());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                Long endTrigger = notifyEndDate.getTime();
+
+                Intent intent = new Intent(CourseDetail.this, NotificationReceiver.class);
+                intent.putExtra("key", "Your course: " + currentCourse.getCourseName() + " is ending on " + currentCourse.getCourseEndDate());
+                PendingIntent sender = PendingIntent.getBroadcast(CourseDetail.this, ++MainActivity.numAlert, intent, 0);
+
+                AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, endTrigger, sender);
+
+                return true;
+            }
         }
         return super.onOptionsItemSelected(item);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
+        getMenuInflater().inflate(R.menu.course_menu, menu);
         return true;
     }
 

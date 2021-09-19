@@ -15,7 +15,7 @@ public class TermEntity {
     private String termStartDate;
     private String termEndDate;
 
-    //private List<CourseEntity> associatedCourses;
+    public static int numOfAssociatedCourses;
 
     public TermEntity(int termID, String termName, String termStartDate, String termEndDate) {
         this.termID = termID;
@@ -56,15 +56,13 @@ public class TermEntity {
         this.termEndDate = termEndDate;
     }
 
-    /*
-    public List<CourseEntity> getAssociatedCourses() {
-        return associatedCourses;
+    public static int getNumOfAssociatedCourses() {
+        return numOfAssociatedCourses;
     }
 
-    public void setAssociatedCourses(List<CourseEntity> associatedCourses) {
-        this.associatedCourses = associatedCourses;
+    public static void setNumOfAssociatedCourses(int numOfAssociatedCourses) {
+        TermEntity.numOfAssociatedCourses = numOfAssociatedCourses;
     }
-    */
 
     @NonNull
     @Override

@@ -6,10 +6,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.montiel.studenttermtracker.DAO.TermDAO;
 import com.montiel.studenttermtracker.Database.Repository;
 import com.montiel.studenttermtracker.Entities.CourseEntity;
 import com.montiel.studenttermtracker.Entities.TermEntity;
@@ -78,11 +81,40 @@ public class CourseList extends AppCompatActivity {
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            this.finish();
-            return true;
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+
+            case R.id.delete_term_menu_item: {
+
+                boolean hasNoAssociatedCourses = true;
+
+                for (CourseEntity c : allCourses) {
+                    if (c.getTermID() == termID) {
+                        hasNoAssociatedCourses = false;
+                        break;
+                    }
+                }
+
+                if (hasNoAssociatedCourses) {
+                    repository.deleteTerm(repository.getTermByID(termID));
+                    Intent intent = new Intent(CourseList.this, TermList.class);
+                    startActivity(intent);
+                    return true;
+                } else {
+                    Toast.makeText(this, "Unable to delete term. Must delete associated courses first!", Toast.LENGTH_LONG).show();
+                    return false;
+                }
+            }
         }
+
         return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.term_detail_menu, menu);
+        return true;
     }
 
     public void addCourse(View view) {
