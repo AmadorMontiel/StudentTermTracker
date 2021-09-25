@@ -111,16 +111,13 @@
                     android:text="@string/course_status"
                     android:textSize="18sp" />
 
-                <EditText
-                    android:id="@+id/edit_course_status"
-                    android:layout_width="0dp"
+                <Spinner
+                    android:id="@+id/edit_course_status_spinner"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="@string/course_status_hint"
-                    android:importantForAutofill="no"
-                    android:inputType="text"
-                    tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+                    android:layout_width="0dp"
+                    android:spinnerMode="dropdown"
+                    />
 
             </LinearLayout>
 

@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.montiel.studenttermtracker.Database.Repository;
 import com.montiel.studenttermtracker.Entities.CourseEntity;
@@ -21,6 +23,7 @@ public class AddCourse extends AppCompatActivity {
     List<CourseEntity> allCourses;
     int courseID;
     int termID;
+    Spinner spinner;
 
     EditText addCourseName;
     EditText addCourseStartDate;
@@ -40,6 +43,15 @@ public class AddCourse extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        String[] courseStatus = new String[] {"In Progress", "Completed", "Dropped", "Plan To Take"};
+
+        spinner = findViewById(R.id.edit_course_status_spinner);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, courseStatus);
+
+        spinner.setAdapter(adapter);
+
+
 
         repository = new Repository(getApplication());
         allCourses = repository.getAllCourses();
@@ -49,11 +61,13 @@ public class AddCourse extends AppCompatActivity {
         addCourseName = findViewById(R.id.edit_course_name);
         addCourseStartDate = findViewById(R.id.edit_course_start_date);
         addCourseEndDate = findViewById(R.id.edit_course_end_date);
-        addCourseStatus = findViewById(R.id.edit_course_status);
+        //addCourseStatus = findViewById(R.id.edit_course_status);
         addCourseInstructorName = findViewById(R.id.edit_course_instructor_name);
         addCourseInstructorPhoneNumber = findViewById(R.id.edit_course_instructor_phone_number);
         addCourseInstructorEmailAddress = findViewById(R.id.edit_course_instructor_email_address);
         addCourseNote = findViewById(R.id.edit_course_note);
+
+
 
     }
 
