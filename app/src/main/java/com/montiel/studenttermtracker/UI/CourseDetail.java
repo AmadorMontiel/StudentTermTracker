@@ -160,6 +160,12 @@ public class CourseDetail extends AppCompatActivity {
 
                 return true;
             }
+
+            case R.id.delete_course_menu_item: {
+                repository.deleteCourse(currentCourse);
+                Intent intent = new Intent(CourseDetail.this, CourseList.class);
+                startActivity(intent);
+            }
         }
         return super.onOptionsItemSelected(item);
     }

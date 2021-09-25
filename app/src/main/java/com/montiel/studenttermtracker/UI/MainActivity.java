@@ -22,13 +22,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Repository repository = new Repository(getApplication());
-        TermEntity testTerm1 = new TermEntity(1, "Test Term 1", "08/15/2021", "08/15/2022");
+        TermEntity testTerm1 = new TermEntity(1, "Test Term 1", "08/15/21", "08/15/22");
         repository.insertTerm(testTerm1);
-        TermEntity testTerm2 = new TermEntity(2, "Fall Term", "09/07/2022", "09/11/2023");
-        CourseEntity testCourse1 = new CourseEntity(1, "Math", "08152005", "08152006", "Enrolled", "Bob Smith", "555-555-5555", "bobsmith@hsd.edu", 1);
+        TermEntity testTerm2 = new TermEntity(2, "Fall Term", "09/07/22", "09/11/23");
+        CourseEntity testCourse1 = new CourseEntity(1, "Math", "08/15/05", "09/30/05", "Enrolled", "Bob Smith", "555-243-1098", "bobsmith@hsd.edu", "This class will probably take 6 weeks.", 1);
         repository.insertTerm(testTerm2);
         repository.insertCourse(testCourse1);
-        AssessmentEntity testAssessment = new AssessmentEntity(1, "GCA-1", "Performance", "08092010", "08092015" ,1);
+        AssessmentEntity testAssessment = new AssessmentEntity(1, "GCA-1", "Performance", "08/09/10", "08/09/15" ,1);
         repository.insertAssessment(testAssessment);
     }
 

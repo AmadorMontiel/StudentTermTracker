@@ -13,7 +13,7 @@
     <string name="term_start_date">Term Start Date</string>
     <string name="term_end_date">Term End Date</string>
     <string name="save_term">Save Term</string>
-    <string name="date_hint">mm/dd/yyyy</string>
+    <string name="date_hint">mm/dd/yy</string>
     <string name="term_title_hint">Ex. Spring, Term 1, etc.</string>
     <string name="course_detail_test">Course Detail Test Button</string>
     <string name="instructor_name">Instructor Name</string>

@@ -8,6 +8,7 @@ import com.montiel.studenttermtracker.DAO.TermDAO;
 import com.montiel.studenttermtracker.Entities.AssessmentEntity;
 import com.montiel.studenttermtracker.Entities.CourseEntity;
 import com.montiel.studenttermtracker.Entities.TermEntity;
+import com.montiel.studenttermtracker.UI.AssessmentDetail;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -46,6 +47,18 @@ public class Repository {
     public void deleteTerm(TermEntity termEntity) {
         databaseExecutor.execute(() -> {
             termDAO.delete(termEntity);
+        });
+    }
+
+    public void deleteCourse(CourseEntity courseEntity) {
+        databaseExecutor.execute(() -> {
+            courseDAO.delete(courseEntity);
+        });
+    }
+
+    public void deleteAssessment(AssessmentEntity assessmentEntity) {
+        databaseExecutor.execute(() -> {
+            assessmentDAO.delete(assessmentEntity);
         });
     }
 

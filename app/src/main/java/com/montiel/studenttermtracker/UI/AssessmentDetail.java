@@ -128,12 +128,19 @@ public class AssessmentDetail extends AppCompatActivity {
                 Long endTrigger = notifyEndDate.getTime();
 
                 Intent intent = new Intent(AssessmentDetail.this, NotificationReceiver.class);
-                intent.putExtra("key", "Your course: " + currentAssessment.getAssessmentName() + " is ending on " + currentAssessment.getAssessmentEndDate());
+                intent.putExtra("key", "Your assessment: " + currentAssessment.getAssessmentName() + " is ending on " + currentAssessment.getAssessmentEndDate());
                 PendingIntent sender = PendingIntent.getBroadcast(AssessmentDetail.this, ++MainActivity.numAlert, intent, 0);
 
                 AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                 alarmManager.set(AlarmManager.RTC_WAKEUP, endTrigger, sender);
 
+                return true;
+            }
+
+            case R.id.delete_assessment_menu_item: {
+                repository.deleteAssessment(currentAssessment);
+                Intent intent = new Intent(AssessmentDetail.this, CourseDetail.class);
+                startActivity(intent);
                 return true;
             }
         }

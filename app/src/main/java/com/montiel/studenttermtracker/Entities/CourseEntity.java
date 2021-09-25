@@ -38,8 +38,8 @@ public class CourseEntity {
         this.termID = termID;
     }
 
-    @Ignore
-    public CourseEntity(int courseID, String courseName,
+    //@Ignore
+    /*public CourseEntity(int courseID, String courseName,
                         String courseStartDate, String courseEndDate,
                         String status, String instructorName,
                         String instructorPhoneNumber,
@@ -53,7 +53,7 @@ public class CourseEntity {
         this.instructorPhoneNumber = instructorPhoneNumber;
         this.instructorEmailAddress = instructorEmailAddress;
         this.termID = termID;
-    }
+    }*/
 
     public int getCourseID() {
         return courseID;
