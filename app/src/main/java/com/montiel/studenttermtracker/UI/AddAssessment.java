@@ -13,13 +13,14 @@ import com.montiel.studenttermtracker.Database.Repository;
 import com.montiel.studenttermtracker.Entities.AssessmentEntity;
 import com.montiel.studenttermtracker.R;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class AddAssessment extends AppCompatActivity {
 
     Repository repository;
-    List<AssessmentEntity> allAssessments;
+    ArrayList<AssessmentEntity> allAssessments;
     int assessmentID;
     int courseID;
 

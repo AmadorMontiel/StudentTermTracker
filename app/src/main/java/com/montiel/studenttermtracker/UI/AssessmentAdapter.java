@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.montiel.studenttermtracker.Entities.AssessmentEntity;
 import com.montiel.studenttermtracker.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AssessmentAdapter  extends RecyclerView.Adapter<AssessmentAdapter.AssessmentViewHolder> {
@@ -40,7 +41,7 @@ public class AssessmentAdapter  extends RecyclerView.Adapter<AssessmentAdapter.A
         }
     }
 
-    private List<AssessmentEntity> mAssessments;
+    private ArrayList<AssessmentEntity> mAssessments;
     private final Context context;
     private final LayoutInflater mInflater;
 
@@ -66,7 +67,7 @@ public class AssessmentAdapter  extends RecyclerView.Adapter<AssessmentAdapter.A
         }
     }
 
-    public void setAssessments(List<AssessmentEntity> assessments) {
+    public void setAssessments(ArrayList<AssessmentEntity> assessments) {
         mAssessments = assessments;
         notifyDataSetChanged();
     }

@@ -19,6 +19,7 @@ import com.montiel.studenttermtracker.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -27,7 +28,7 @@ import java.util.Objects;
 public class AssessmentDetail extends AppCompatActivity {
 
     Repository repository;
-    List<AssessmentEntity> allAssessments;
+    ArrayList<AssessmentEntity> allAssessments;
     int assessmentID;
 
     EditText editAssessmentName;

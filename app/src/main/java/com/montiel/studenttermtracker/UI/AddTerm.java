@@ -12,13 +12,14 @@ import com.montiel.studenttermtracker.Database.Repository;
 import com.montiel.studenttermtracker.Entities.TermEntity;
 import com.montiel.studenttermtracker.R;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class AddTerm extends AppCompatActivity {
 
     Repository repository;
-    List<TermEntity> allTerms;
+    ArrayList<TermEntity> allTerms;
     int termID;
 
     EditText editTermName;

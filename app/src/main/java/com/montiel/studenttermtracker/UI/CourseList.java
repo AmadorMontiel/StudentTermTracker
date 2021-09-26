@@ -18,14 +18,15 @@ import com.montiel.studenttermtracker.Entities.CourseEntity;
 import com.montiel.studenttermtracker.Entities.TermEntity;
 import com.montiel.studenttermtracker.R;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class CourseList extends AppCompatActivity {
 
     Repository repository;
-    List<TermEntity> allTerms;
-    List<CourseEntity> allCourses;
+    ArrayList<TermEntity> allTerms;
+    ArrayList<CourseEntity> allCourses;
     int termID;
 
     EditText editTermName;

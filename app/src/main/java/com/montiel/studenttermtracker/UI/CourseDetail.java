@@ -12,7 +12,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.montiel.studenttermtracker.Database.Repository;
 import com.montiel.studenttermtracker.Entities.AssessmentEntity;
@@ -21,6 +23,7 @@ import com.montiel.studenttermtracker.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -29,15 +32,17 @@ import java.util.Objects;
 public class CourseDetail extends AppCompatActivity {
 
     Repository repository;
-    List<CourseEntity> allCourses;
-    List<AssessmentEntity> allAssessments;
+    ArrayList<CourseEntity> allCourses;
+    ArrayList<AssessmentEntity> allAssessments;
+    Spinner editCourseStatusSpinner;
+    String[] courseStatus;
 
     int courseID;
+    int position;
 
     EditText editCourseName;
     EditText editCourseStartDate;
     EditText editCourseEndDate;
-    EditText editCourseStatus;
     EditText editCourseInstructorName;
     EditText editCourseInstructorPhoneNumber;
     EditText editCourseInstructorEmailAddress;
@@ -55,6 +60,7 @@ public class CourseDetail extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        courseStatus = new String[] {"In Progress", "Completed", "Dropped", "Plan To Take"};
         repository = new Repository(getApplication());
         allCourses = repository.getAllCourses();
         courseID = getIntent().getIntExtra("courseID", -1);
@@ -70,11 +76,14 @@ public class CourseDetail extends AppCompatActivity {
         editCourseName = findViewById(R.id.edit_course_name);
         editCourseStartDate = findViewById(R.id.edit_course_start_date);
         editCourseEndDate = findViewById(R.id.edit_course_end_date);
-        editCourseStatus = findViewById(R.id.edit_course_status);
+        editCourseStatusSpinner = findViewById(R.id.edit_course_status_spinner);
         editCourseInstructorName = findViewById(R.id.edit_course_instructor_name);
         editCourseInstructorPhoneNumber = findViewById(R.id.edit_course_instructor_phone_number);
         editCourseInstructorEmailAddress = findViewById(R.id.edit_course_instructor_email_address);
         editCourseNote = findViewById(R.id.edit_course_note);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, courseStatus);
+        editCourseStatusSpinner.setAdapter(adapter);
 
         if (currentCourse != null) {
 
@@ -84,10 +93,29 @@ public class CourseDetail extends AppCompatActivity {
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             assessmentAdapter.setAssessments(allAssessments);
 
+            switch (currentCourse.getStatus()) {
+                case "In Progress": {
+                    position = 0;
+                    break;
+                }
+                case "Completed": {
+                    position = 1;
+                    break;
+                }
+                case "Dropped": {
+                    position = 2;
+                    break;
+                }
+                case "Plan To Take": {
+                    position = 3;
+                    break;
+                }
+            }
+
             editCourseName.setText(currentCourse.getCourseName());
             editCourseStartDate.setText(currentCourse.getCourseStartDate());
             editCourseEndDate.setText(currentCourse.getCourseEndDate());
-            editCourseStatus.setText(currentCourse.getStatus());
+            editCourseStatusSpinner.setSelection(position);
             editCourseInstructorName.setText(currentCourse.getInstructorName());
             editCourseInstructorPhoneNumber.setText(currentCourse.getInstructorPhoneNumber());
             editCourseInstructorEmailAddress.setText(currentCourse.getInstructorEmailAddress());
@@ -191,7 +219,7 @@ public class CourseDetail extends AppCompatActivity {
                 editCourseName.getText().toString(),
                 editCourseStartDate.getText().toString(),
                 editCourseEndDate.getText().toString(),
-                editCourseStatus.getText().toString(),
+                editCourseStatusSpinner.getSelectedItem().toString(),
                 editCourseInstructorName.getText().toString(),
                 editCourseInstructorPhoneNumber.getText().toString(),
                 editCourseInstructorEmailAddress.getText().toString(),

@@ -16,6 +16,7 @@ import com.montiel.studenttermtracker.Database.Repository;
 import com.montiel.studenttermtracker.Entities.TermEntity;
 import com.montiel.studenttermtracker.R;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -31,7 +32,7 @@ public class TermList extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         repository = new Repository(getApplication());
-        List<TermEntity> allTerms = repository.getAllTerms();
+        ArrayList<TermEntity> allTerms = repository.getAllTerms();
 
         RecyclerView recyclerView = findViewById(R.id.termListRecyclerView);
         final TermAdapter termAdapter = new TermAdapter(this);
@@ -55,7 +56,7 @@ public class TermList extends AppCompatActivity {
 
             case R.id.refresh_menu_item: {
                 repository = new Repository(getApplication());
-                List<TermEntity> allTerms = repository.getAllTerms();
+                ArrayList<TermEntity> allTerms = repository.getAllTerms();
 
                 RecyclerView recyclerView = findViewById(R.id.termListRecyclerView);
                 final TermAdapter termAdapter = new TermAdapter(this);

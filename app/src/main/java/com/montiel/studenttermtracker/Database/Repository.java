@@ -10,6 +10,7 @@ import com.montiel.studenttermtracker.Entities.CourseEntity;
 import com.montiel.studenttermtracker.Entities.TermEntity;
 import com.montiel.studenttermtracker.UI.AssessmentDetail;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -19,9 +20,9 @@ public class Repository {
     private final CourseDAO courseDAO;
     private final AssessmentDAO assessmentDAO;
     private TermEntity selectedTerm;
-    private List<TermEntity> allTerms;
-    private List<CourseEntity> allCourses;
-    private List<AssessmentEntity> allAssessments;
+    private ArrayList<TermEntity> allTerms;
+    private ArrayList<CourseEntity> allCourses;
+    private ArrayList<AssessmentEntity> allAssessments;
     private static final int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
@@ -80,9 +81,9 @@ public class Repository {
         });
     }
 
-    public List<TermEntity> getAllTerms() {
+    public ArrayList<TermEntity> getAllTerms() {
         databaseExecutor.execute(() ->{
-            allTerms = termDAO.getAllTerms();
+            allTerms = (ArrayList<TermEntity>) termDAO.getAllTerms();
         });
 
         try {
@@ -118,9 +119,9 @@ public class Repository {
         }
     }
 
-    public List<CourseEntity> getAllCourses() {
+    public ArrayList<CourseEntity> getAllCourses() {
         databaseExecutor.execute(() ->{
-            allCourses = courseDAO.getAllCourses();
+            allCourses = (ArrayList<CourseEntity>) courseDAO.getAllCourses();
         });
 
         try {
@@ -132,9 +133,9 @@ public class Repository {
         return allCourses;
     }
 
-    public List<CourseEntity> getCoursesByTerm(int associatedTerm) {
+    public ArrayList<CourseEntity> getCoursesByTerm(int associatedTerm) {
         databaseExecutor.execute(() -> {
-            allCourses = courseDAO.getCoursesByTerm(associatedTerm);
+            allCourses = (ArrayList<CourseEntity>) courseDAO.getCoursesByTerm(associatedTerm);
         });
 
         try {
@@ -146,9 +147,9 @@ public class Repository {
         return allCourses;
     }
 
-    public List<AssessmentEntity> getAllAssessments() {
+    public ArrayList<AssessmentEntity> getAllAssessments() {
         databaseExecutor.execute(() -> {
-            allAssessments = assessmentDAO.getAllAssessments();
+            allAssessments = (ArrayList<AssessmentEntity>) assessmentDAO.getAllAssessments();
         });
 
         try {
@@ -160,9 +161,9 @@ public class Repository {
         return allAssessments;
     }
 
-    public List<AssessmentEntity> getAssessmentsByCourse(int associatedCourse) {
+    public ArrayList<AssessmentEntity> getAssessmentsByCourse(int associatedCourse) {
         databaseExecutor.execute(() -> {
-            allAssessments = assessmentDAO.getAssessmentsByCourse(associatedCourse);
+            allAssessments = (ArrayList<AssessmentEntity>) assessmentDAO.getAssessmentsByCourse(associatedCourse);
         });
 
         try {

@@ -117,12 +117,27 @@
     <View
         android:id="@+id/divider"
         android:layout_width="448dp"
-        android:layout_height="1dp"
+        android:layout_height="10dp"
         android:layout_marginTop="15dp"
         android:background="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
+    <TextView
+        android:id="@+id/courseListText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#706E6E"
+        android:ems="10"
+        android:text="@string/course_list"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/courseListRecyclerView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_course_button"
@@ -143,11 +158,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="1dp"
         android:background="#80A0F1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider" />
+        app:layout_constraintTop_toBottomOf="@+id/courseListText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

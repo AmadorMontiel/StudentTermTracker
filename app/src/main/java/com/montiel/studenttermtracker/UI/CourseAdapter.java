@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.montiel.studenttermtracker.Entities.CourseEntity;
 import com.montiel.studenttermtracker.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CourseAdapter  extends RecyclerView.Adapter<CourseAdapter.CourseViewHolder>{
@@ -44,7 +45,7 @@ public class CourseAdapter  extends RecyclerView.Adapter<CourseAdapter.CourseVie
             });
         }
     }
-    private List<CourseEntity> mCourses;
+    private ArrayList<CourseEntity> mCourses;
     private final Context context;
     private final LayoutInflater mInflater;
 
@@ -70,7 +71,7 @@ public class CourseAdapter  extends RecyclerView.Adapter<CourseAdapter.CourseVie
         }
     }
 
-    public void setCourses(List<CourseEntity> courses) {
+    public void setCourses(ArrayList<CourseEntity> courses) {
         mCourses = courses;
         notifyDataSetChanged();
     }

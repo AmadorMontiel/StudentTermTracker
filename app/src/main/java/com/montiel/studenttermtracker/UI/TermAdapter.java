@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.montiel.studenttermtracker.Entities.TermEntity;
 import com.montiel.studenttermtracker.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TermAdapter extends RecyclerView.Adapter<TermAdapter.TermViewHolder>{
@@ -39,7 +40,7 @@ public class TermAdapter extends RecyclerView.Adapter<TermAdapter.TermViewHolder
             });
         }
     }
-    private List<TermEntity> mTerms;
+    private ArrayList<TermEntity> mTerms;
     private final Context context;
     private final LayoutInflater mInflater;
 
@@ -65,7 +66,7 @@ public class TermAdapter extends RecyclerView.Adapter<TermAdapter.TermViewHolder
         }
     }
 
-    public void setTerms(List<TermEntity> terms) {
+    public void setTerms(ArrayList<TermEntity> terms) {
         mTerms = terms;
         notifyDataSetChanged();
     }

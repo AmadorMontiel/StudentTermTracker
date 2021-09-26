@@ -109,16 +109,13 @@
                     android:text="@string/course_status"
                     android:textSize="18sp" />
 
-                <EditText
-                    android:id="@+id/edit_course_status"
+                <Spinner
+                    android:id="@+id/edit_course_status_spinner"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="@string/course_status_hint"
-                    android:importantForAutofill="no"
-                    android:inputType="text"
-                    tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+                    android:spinnerMode="dropdown"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
             </LinearLayout>
 
@@ -244,12 +241,27 @@
     <View
         android:id="@+id/divider2"
         android:layout_width="422dp"
-        android:layout_height="1dp"
+        android:layout_height="10dp"
         android:layout_marginTop="15dp"
         android:background="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView5" />
+
+    <TextView
+        android:id="@+id/assessment_list_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#706E6E"
+        android:ems="10"
+        android:text="@string/assessment_list"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/assessment_recycler_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider2" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_assessment_button"
@@ -269,9 +281,9 @@
         android:id="@+id/assessment_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider2" />
+        app:layout_constraintTop_toBottomOf="@+id/assessment_list_text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

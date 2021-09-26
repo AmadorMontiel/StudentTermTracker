@@ -9,6 +9,7 @@ import androidx.room.Update;
 
 import com.montiel.studenttermtracker.Entities.TermEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Dao
