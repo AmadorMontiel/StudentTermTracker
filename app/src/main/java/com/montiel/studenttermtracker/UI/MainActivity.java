@@ -34,22 +34,25 @@ public class MainActivity extends AppCompatActivity {
         AssessmentEntity testAssessment4 = new AssessmentEntity(4, "CAL1-4", "Performance", "12/01/21", "12/01/21" ,1);
         AssessmentEntity testAssessment5 = new AssessmentEntity(5, "CAL1-5", "Objective", "12/23/21", "12/23/21" ,1);
 
-        AssessmentEntity testAssessment21 = new AssessmentEntity(11, "CAL2-1", "Objective", "02/10/22", "02/10/22" ,2);
-        AssessmentEntity testAssessment22 = new AssessmentEntity(12, "CAL2-2", "Performance", "03/08/22", "03/08/22" ,2);
-        AssessmentEntity testAssessment23 = new AssessmentEntity(13, "CAL2-3", "Objective", "04/04/22", "04/04/22" ,2);
-        AssessmentEntity testAssessment24 = new AssessmentEntity(14, "CAL2-4", "Performance", "05/01/22", "05/01/22" ,2);
-        AssessmentEntity testAssessment25 = new AssessmentEntity(15, "CAL2-5", "Objective", "05/23/22", "05/23/22" ,2);
+        AssessmentEntity testAssessment6 = new AssessmentEntity(6, "CAL2-1", "Objective", "02/10/22", "02/10/22" ,2);
+        AssessmentEntity testAssessment7 = new AssessmentEntity(7, "CAL2-2", "Performance", "03/08/22", "03/08/22" ,2);
+        AssessmentEntity testAssessment8 = new AssessmentEntity(8, "CAL2-3", "Objective", "04/04/22", "04/04/22" ,2);
+        AssessmentEntity testAssessment9 = new AssessmentEntity(9, "CAL2-4", "Performance", "05/01/22", "05/01/22" ,2);
+        AssessmentEntity testAssessment10 = new AssessmentEntity(10, "CAL2-5", "Objective", "05/23/22", "05/23/22" ,2);
 
 
-        repository.insertTerm(testTerm1); repository.insertTerm(testTerm2);
+        repository.insertTerm(testTerm1);
+        repository.insertTerm(testTerm2);
 
         repository.insertCourse(testCourse1);
         repository.insertCourse(testCourse5);
 
-        repository.insertAssessment(testAssessment1); repository.insertAssessment(testAssessment2); repository.insertAssessment(testAssessment3); repository.insertAssessment(testAssessment4);
+        repository.insertAssessment(testAssessment1); repository.insertAssessment(testAssessment2);
+        repository.insertAssessment(testAssessment3); repository.insertAssessment(testAssessment4);
         repository.insertAssessment(testAssessment5);
-        repository.insertAssessment(testAssessment21); repository.insertAssessment(testAssessment22); repository.insertAssessment(testAssessment23); repository.insertAssessment(testAssessment24);
-        repository.insertAssessment(testAssessment25);
+        repository.insertAssessment(testAssessment6); repository.insertAssessment(testAssessment7);
+        repository.insertAssessment(testAssessment8); repository.insertAssessment(testAssessment9);
+        repository.insertAssessment(testAssessment10);
     }
 
     public void enterApplication(View view) {
