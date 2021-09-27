@@ -10,6 +10,7 @@
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -113,13 +114,10 @@
 
             <View
                 android:id="@+id/divider"
-                android:layout_width="448dp"
+                android:layout_width="wrap_content"
                 android:layout_height="10dp"
                 android:layout_marginTop="15dp"
-                android:background="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+                android:background="@color/black" />
 
             <TextView
                 android:id="@+id/courseListText"
@@ -131,10 +129,7 @@
                 android:ems="10"
                 android:text="@string/course_list"
                 android:textAlignment="center"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/courseListRecyclerView"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/divider" />
+                android:textSize="20sp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/courseListRecyclerView"
@@ -143,30 +138,23 @@
                 android:layout_marginStart="1dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="1dp"
-                android:background="#80A0F1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/courseListText" />
+                android:background="#80A0F1">
+
+            </androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>
     </ScrollView>
-
-
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_course_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="15dp"
         android:clickable="true"
         android:contentDescription="@string/add_course"
         android:onClick="addCourse"
         android:src="@drawable/ic_add_foreground"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
         tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

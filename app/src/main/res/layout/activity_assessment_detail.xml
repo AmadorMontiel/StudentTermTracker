@@ -53,9 +53,9 @@
 
                 <TextView
                     android:id="@+id/assessment_details_start_date"
-                    android:layout_gravity="fill"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="fill"
                     android:layout_weight="1"
                     android:text="@string/assessment_start_date"
                     android:textSize="18sp" />
@@ -79,9 +79,9 @@
 
                 <TextView
                     android:id="@+id/assessment_details_end_date"
-                    android:layout_gravity="fill"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="fill"
                     android:layout_weight="1"
                     android:text="@string/assessment_end_date"
                     android:textSize="18sp" />
@@ -97,47 +97,48 @@
                     android:inputType="date"
                     tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
             </LinearLayout>
+
+            <RadioGroup
+                android:id="@+id/assessment_radio_button_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent">
+
+                <RadioButton
+                    android:id="@+id/objective_radio_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/objective_radiobutton_text" />
+
+                <RadioButton
+                    android:id="@+id/performance_radio_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/performance_radiobutton_text"
+                    tools:layout_editor_absoluteX="205dp"
+                    tools:layout_editor_absoluteY="168dp" />
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/save_assessment_button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="116dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="117dp"
+                android:onClick="saveAssessment"
+                android:text="@string/save_assessment"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/assessment_radio_button_group" />
         </LinearLayout>
     </ScrollView>
 
-    <RadioGroup
-        android:id="@+id/assessment_radio_button_group"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/assessment_scrollview">
-
-        <RadioButton
-            android:id="@+id/objective_radio_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/objective_radiobutton_text" />
-
-        <RadioButton
-            android:id="@+id/performance_radio_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/performance_radiobutton_text"
-            tools:layout_editor_absoluteX="205dp"
-            tools:layout_editor_absoluteY="168dp" />
-    </RadioGroup>
-
-    <Button
-        android:id="@+id/save_assessment_button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="117dp"
-        android:onClick="saveAssessment"
-        android:text="@string/save_assessment"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/assessment_radio_button_group" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
